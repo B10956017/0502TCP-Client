@@ -39,7 +39,7 @@
             this.button_sendall = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button_send = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.listBox_onlinelist = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -119,6 +119,7 @@
             this.button_sendall.TabIndex = 8;
             this.button_sendall.Text = "廣播";
             this.button_sendall.UseVisualStyleBackColor = true;
+            this.button_sendall.Click += new System.EventHandler(this.button_sendall_Click);
             // 
             // label4
             // 
@@ -136,16 +137,16 @@
             this.textBox5.Size = new System.Drawing.Size(296, 22);
             this.textBox5.TabIndex = 10;
             // 
-            // button_send
+            // button3
             // 
-            this.button_send.Enabled = false;
-            this.button_send.Location = new System.Drawing.Point(406, 510);
-            this.button_send.Name = "button_send";
-            this.button_send.Size = new System.Drawing.Size(100, 24);
-            this.button_send.TabIndex = 11;
-            this.button_send.Text = "送出";
-            this.button_send.UseVisualStyleBackColor = true;
-            this.button_send.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Enabled = false;
+            this.button3.Location = new System.Drawing.Point(406, 510);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(100, 24);
+            this.button3.TabIndex = 11;
+            this.button3.Text = "送出";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // listBox_onlinelist
             // 
@@ -172,7 +173,7 @@
             this.ClientSize = new System.Drawing.Size(518, 659);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.listBox_onlinelist);
-            this.Controls.Add(this.button_send);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button_sendall);
@@ -205,7 +206,7 @@
         private System.Windows.Forms.Button button_sendall;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Button button_send;
+        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ListBox listBox_onlinelist;
         private System.Windows.Forms.Label label5;
     }

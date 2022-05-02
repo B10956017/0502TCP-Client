@@ -48,6 +48,7 @@ namespace WindowsFormsApp1
                 return;
             }
             button1.Enabled = false;                  //讓連線按鍵失效，避免重複連線 
+            button3.Enabled = false;
         }
         //傳送訊息給 Server (Send Message to the Server)
         private void Send(string Str)
@@ -78,11 +79,63 @@ namespace WindowsFormsApp1
             else
             {
                 Send("2" + "來自" + User + ":" + textBox5.Text + "1"+listBox_onlinelist.SelectedItem);
+                textBox5.Text += "告訴" + listBox_onlinelist.SelectedItem+":"+textBox5.Text+"\r\n";
+
             }
+            textBox5.Text = "";
         }
         private void Listen()
         {
+            EndPoint ServerEP = (EndPoint)T.RemoteEndPoint;
+            byte[] B = new byte[1023];
+            int inLen = 0;
+            string Msg;//接收到的完整訊息
+            string St;//指令碼
+            string Str;//訊息內容
+            while(true)
+            {
+                try
+                {
+                    inLen = T.ReceiveFrom(B, ref ServerEP);
+                }
+                catch(Exception e)
+                {
+                    T.Close();
+                    listBox_onlinelist.Items.Clear();
+                    MessageBox.Show("伺服器斷線");
+                    button1.Enabled = true;
+                    TH.Abort();
+                }
+                Msg = Encoding.Default.GetString(B, 0, inLen);
+                St = Msg.Substring(0, 1);
+                Str = Msg.Substring(1);
+                switch (St)
+                {
+                    case "L":
+                        listBox_onlinelist.Items.Clear();
+                        string[] M = Str.Split(',');
+                        foreach (string user in M)
+                        {
+                            listBox_onlinelist.Items.Add(user);
+                        }
+                        break;
+                    case "1"://接收廣播訊息
+                        textBox_main.Text += "(公開)" + Str + "\r\n";
+                        textBox_main.SelectionStart = textBox_main.Text.Length;
+                        textBox_main.ScrollToCaret();
+                        break;
+                    case "2"://接收廣播訊息
+                        textBox_main.Text += "(私密)" + Str + "\r\n";
+                        textBox_main.SelectionStart = textBox_main.Text.Length;
+                        textBox_main.ScrollToCaret();
+                        break;
+                }
+            }
+        }
 
+        private void button_sendall_Click(object sender, EventArgs e)
+        {
+            listBox_onlinelist.ClearSelected();
         }
     }
 }
