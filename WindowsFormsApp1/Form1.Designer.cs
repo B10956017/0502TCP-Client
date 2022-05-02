@@ -42,6 +42,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.listBox_onlinelist = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -166,11 +167,22 @@
             this.label5.TabIndex = 13;
             this.label5.Text = "發言內容";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(265, 90);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(100, 23);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "登出伺服器";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(518, 659);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.listBox_onlinelist);
             this.Controls.Add(this.button3);
@@ -209,6 +221,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ListBox listBox_onlinelist;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button2;
     }
 }
 

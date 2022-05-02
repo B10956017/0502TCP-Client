@@ -48,7 +48,7 @@ namespace WindowsFormsApp1
                 return;
             }
             button1.Enabled = false;                  //讓連線按鍵失效，避免重複連線 
-            button3.Enabled = false;
+            button3.Enabled = true;
         }
         //傳送訊息給 Server (Send Message to the Server)
         private void Send(string Str)
@@ -74,7 +74,7 @@ namespace WindowsFormsApp1
             }
             if(listBox_onlinelist.SelectedIndex<0)
             {
-                Send("1" + User + "公告" + textBox5);
+                Send("1" + User + "公告" + textBox5.Text);
             }
             else
             {
